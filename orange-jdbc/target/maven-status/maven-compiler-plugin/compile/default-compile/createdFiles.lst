@@ -1,2 +1,4 @@
 com\orange\config\DatabaseConfig.class
+com\orange\dao\InternDao.class
 com\orange\Main.class
+com\orange\model\Intern.class

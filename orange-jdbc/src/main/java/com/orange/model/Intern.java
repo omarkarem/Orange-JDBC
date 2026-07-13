@@ -1,12 +1,6 @@
 package com.orange.model;
 
-import java.beans.Statement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
-
-import com.orange.config.DatabaseConfig;
 
 public class Intern {
     private int id;
@@ -77,29 +71,7 @@ public class Intern {
 
     @Override
     public String toString() {
-        return "Intern { id=" + id + ", name='" + fullName + "', email='" + email + "joinDate=" + joinDate
-                + ", trackId=" + trackId + ", mentorId=" + mentorId + "}";
-    }
-
-    public List<Intern> findAllInterns() {
-        List<Intern> interns = new ArrayList<>();
-        String sql = "SELECT * from interns";
-        try (Connection conn = DatabaseConfig.getConnection();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                Intern intern = new Intern(
-                        rs.getInt("id"),
-                        rs.getString("fullname"),
-                        rs.getString("email"),
-                        rs.getDate("joinDate").toLocalDate(),
-                        rs.getInt("trackId"),
-                        rs.getInt("mentorId"));
-                interns.add(intern);
-            }
-        } catch (SQLException e) {
-            System.out.println("error reading interns: " + e.getMessage());
-        }
-        return interns;
+        return "Intern { id=" + id + ", name='" + fullname + "', email='" + email + "', joinDate=" + joinDate
+                + ", trackId=" + trackId + ", mentorId=" + mentorId + " }";
     }
 }

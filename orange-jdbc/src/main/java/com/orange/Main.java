@@ -14,4 +14,11 @@ public class Main {
             System.out.println("error: " + e.getMessage());
         }
     }
+
+    List<Intern> all = InternDao.findAllInterns();
+    System.out.println("=== All Interns ===");
+    for (Intern intern : all) {
+        System.out.println(intern);
+    }
+
 }
