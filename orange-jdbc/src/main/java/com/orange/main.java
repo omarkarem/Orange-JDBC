@@ -1,7 +1,17 @@
 package com.orange;
 
-public class main {
+import java.sql.Connection;
+import java.sql.SQLException;
+import com.orange.config.DatabaseConfig;
+
+public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        try (Connection con = DatabaseConfig.getConnection()) {
+            System.out.println("connected to postgresql");
+            System.out.println("Database: " + con.getCatalog());
+        } catch (SQLException e) {
+            System.out.println("connection failed");
+            System.out.println("error: " + e.getMessage());
+        }
     }
 }

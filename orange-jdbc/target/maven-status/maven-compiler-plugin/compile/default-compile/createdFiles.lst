@@ -1,1 +1,2 @@
-com\orange\main.class
+com\orange\config\DatabaseConfig.class
+com\orange\Main.class
